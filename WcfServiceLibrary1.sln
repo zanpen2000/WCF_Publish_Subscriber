@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31206.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService1", "WcfService1\WcfService1.csproj", "{9A55B9D7-7B9E-4300-BCA9-388013A0D4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wsHost", "wsHost\wsHost.csproj", "{992400BB-EA0C-45CD-83EF-40A13F20C142}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wsClient", "wsClient\wsClient.csproj", "{AFE4E319-C034-4DC9-96A6-57FB46D07C07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A55B9D7-7B9E-4300-BCA9-388013A0D4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A55B9D7-7B9E-4300-BCA9-388013A0D4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A55B9D7-7B9E-4300-BCA9-388013A0D4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A55B9D7-7B9E-4300-BCA9-388013A0D4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992400BB-EA0C-45CD-83EF-40A13F20C142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992400BB-EA0C-45CD-83EF-40A13F20C142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992400BB-EA0C-45CD-83EF-40A13F20C142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992400BB-EA0C-45CD-83EF-40A13F20C142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFE4E319-C034-4DC9-96A6-57FB46D07C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFE4E319-C034-4DC9-96A6-57FB46D07C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFE4E319-C034-4DC9-96A6-57FB46D07C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFE4E319-C034-4DC9-96A6-57FB46D07C07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
