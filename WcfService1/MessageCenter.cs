@@ -30,7 +30,13 @@ namespace WcfService1
             }
         }
 
-        private MessageCenter() { }
+        private MessageCenter()
+        {
+            onlineChecker.Check();
+        }
+
+        private static SubscriberOnlineChecker onlineChecker = SubscriberOnlineChecker.Instance;
+
         #endregion
 
         public List<Listener> Listeners { get { return _listeners; } }
@@ -66,7 +72,7 @@ namespace WcfService1
             {
                 if (_listeners.Count(x => x.ClientMac == listener.ClientMac) > 0 && !AllowClientMultipleRegistration)
                 {
-                    Console.WriteLine("重复注册订阅者");
+                    Console.WriteLine("重复注册订阅者{0}", listener.ClientMac);
                 }
                 else
                 {

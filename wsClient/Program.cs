@@ -13,7 +13,7 @@ namespace wsClient
 
         static void Main(string[] args)
         {
-            SetConsoleCtrlHandler(cancelHandler, true);
+            //SetConsoleCtrlHandler(cancelHandler, true);
             string serviceUri = "net.tcp://127.0.0.1:8888";
             if (args.Length > 0)
             {

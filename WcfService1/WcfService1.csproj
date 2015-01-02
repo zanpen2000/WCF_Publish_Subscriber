@@ -74,6 +74,7 @@
       <DependentUpon>MessagePublishService.svc</DependentUpon>
     </Compile>
     <Compile Include="IListenerCallback.cs" />
+    <Compile Include="SubscriberOnlineChecker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Subscriber.cs" />
   </ItemGroup>
