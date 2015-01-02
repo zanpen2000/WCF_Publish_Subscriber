@@ -64,11 +64,11 @@ namespace wsHost
                 }
                 if (string.Empty == line.Trim())
                 {
-                    Console.WriteLine("[{0}]不能发送空消息", DateTime.Now.ToString("YYYY-MM-dd HH:mm:ss"));
+                    Console.WriteLine("[{0}]不能发送空消息", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     continue;
                 }
                 WcfService1.MessageCenter.Instance.NotifyMessage(line);
-                Console.WriteLine("[{0}]发送成功", DateTime.Now.ToString("YYYY-MM-dd HH:mm:ss"));
+                Console.WriteLine("[{0}]发送成功", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             } while (true);
         }
 

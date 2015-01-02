@@ -41,19 +41,46 @@ namespace WcfService1
 
         private List<Listener> _listeners = new List<Listener>(0);
 
+        /// <summary>
+        /// 根据运行机制决定是否允许同一个客户端订阅多次
+        /// </summary>
+        public bool AllowClientMultipleRegistration
+        {
+            get
+            {
+                bool allow = true;
+                try
+                {
+                    string allowstr = System.Configuration.ConfigurationManager.AppSettings["AllowClientMultipleRegistration"];
+                    Boolean.TryParse(allowstr.ToString(), out allow);
+                }
+                catch { }
+                return allow;
+            }
+        }
+
+
         public void AddListener(Listener listener)
         {
             lock (_syncLock)
             {
-                if (_listeners.Contains(listener))
+                if (_listeners.Count(x => x.ClientMac == listener.ClientMac) > 0 && !AllowClientMultipleRegistration)
                 {
-                    throw new InvalidOperationException("重复注册相同的监听器");
+                    Console.WriteLine("重复注册订阅者");
                 }
-                _listeners.Add(listener);
-            }
-            if (ListenerAdded != null)
-            {
-                this.ListenerAdded(this, new MessageListenerEventArgs(listener));
+                else
+                {
+                    _listeners.Add(listener);
+                    if (ListenerAdded != null)
+                    {
+                        this.ListenerAdded(this, new MessageListenerEventArgs(listener));
+                    }
+                }
+
+                //if (_listeners.Contains(listener))
+                //{
+                //    throw new InvalidOperationException("重复注册相同的监听器");
+                //}
             }
         }
 
