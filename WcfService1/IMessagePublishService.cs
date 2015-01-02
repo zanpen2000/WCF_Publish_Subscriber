@@ -10,9 +10,9 @@ namespace WcfService1
     public interface IMessagePublishService
     {
         [OperationContract]
-        void Regist();
+        void Regist(string clientMac);
 
         [OperationContract]
-        void Unregist();
+        void Unregist(string clientMac);
     }
 }

@@ -81,12 +81,12 @@ namespace wsHost
 
         static void Instance_ListenerRemoved(object sender, WcfService1.MessageListenerEventArgs e)
         {
-            Console.WriteLine("[{0}]取消订阅-- From: {1}:{2}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), e.Listener.FromIP, e.Listener.FromPort);
+            Console.WriteLine("[{0}]取消订阅-- From: {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), e.Listener.ToString());
         }
 
         static void Instance_ListenerAdded(object sender, WcfService1.MessageListenerEventArgs e)
         {
-            Console.WriteLine("[{0}]订阅消息--From: {1}:{2}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), e.Listener.FromIP, e.Listener.FromPort);
+            Console.WriteLine("[{0}]订阅消息--From: {1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), e.Listener.ToString());
         }
     }
 }

@@ -7,11 +7,13 @@ namespace WcfService1
 {
     public class Listener
     {
+        public string ClientMac { get; private set; }
         public string FromIP { get; private set; }
         public int FromPort { get; private set; }
         private IListenerCallback _innerListener;
-        public Listener(string fromIP, int fromPort, IListenerCallback innerListener)
+        public Listener(string clientMac, string fromIP, int fromPort, IListenerCallback innerListener)
         {
+            this.ClientMac = clientMac;
             this.FromIP = fromIP;
             this.FromPort = fromPort;
             this._innerListener = innerListener;
@@ -34,6 +36,11 @@ namespace WcfService1
                 }
             }
             return eq;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}:{1}({2})", this.FromIP, this.FromPort, this.ClientMac);
         }
     }
 }

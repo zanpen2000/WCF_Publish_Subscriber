@@ -33,6 +33,8 @@ namespace WcfService1
         private MessageCenter() { }
         #endregion
 
+        public List<Listener> Listeners { get { return _listeners; } }
+
         public event EventHandler<MessageListenerEventArgs> ListenerAdded;
         public event EventHandler<MessageListenerEventArgs> ListenerRemoved;
         public event EventHandler<MessageNotifyErrorEventArgs> NotifyError;
