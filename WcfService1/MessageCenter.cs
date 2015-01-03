@@ -130,7 +130,7 @@ namespace WcfService1
             {
                 return;
             }
-
+            
             MessageNotifyErrorEventArgs args = new MessageNotifyErrorEventArgs(listener, ex);
             ThreadPool.QueueUserWorkItem(delegate(object state)
             {

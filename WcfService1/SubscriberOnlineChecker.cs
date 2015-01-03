@@ -50,8 +50,6 @@ namespace WcfService1
 
         private static BackgroundWorker backgroundThread = new BackgroundWorker();
 
-        
-
         public void Check()
         {
             backgroundThread.RunWorkerAsync();
@@ -60,7 +58,6 @@ namespace WcfService1
         private SubscriberOnlineChecker()
         {
             backgroundThread.DoWork += backgroundThread_DoWork;
-            backgroundThread.Disposed += backgroundThread_Disposed;
             backgroundThread.RunWorkerCompleted += backgroundThread_RunWorkerCompleted;
         }
 
@@ -70,16 +67,18 @@ namespace WcfService1
             Check();
         }
 
-        void backgroundThread_Disposed(object sender, EventArgs e)
-        {
-            
-        }
-
         void backgroundThread_DoWork(object sender, DoWorkEventArgs e)
         {
             //检查订阅者是否在线,不在线的订阅者取消其订阅
-
             MessageCenter.Instance.NotifyMessage("1");
+
+            //检查自身是否在线
+            if (!PingNetwork.Ping)
+            { 
+                //服务器已离线
+            }
         }
+
+        
     }
 }

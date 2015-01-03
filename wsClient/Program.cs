@@ -74,7 +74,7 @@ namespace wsClient
                     sub.Dispose();
                     break;
             }
-            Console.ReadLine();
+            
             return false;
         } 
         #endregion
