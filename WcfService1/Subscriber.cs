@@ -9,6 +9,8 @@ namespace WcfService1
 {
     public class Subscriber:IDisposable
     {
+        public event EventHandler OnSubscribe = delegate { };
+
         private string _serviceURI;
         private ListenerCallback _listener = null;
         private IMessagePublishService _serviceProxy;
@@ -24,6 +26,11 @@ namespace WcfService1
             NetTcpBinding binding = new NetTcpBinding();
             _serviceProxy = DuplexChannelFactory<IMessagePublishService>.CreateChannel(_listener, binding, new EndpointAddress(_serviceURI));
             _serviceProxy.Regist(GetMacAddressByNetworkInformation());
+
+            if (OnSubscribe != null)
+            {
+                this.OnSubscribe(this, null);
+            }
 
         }
 

@@ -24,23 +24,11 @@ namespace wsClient
             {
                 ListenerCallback listener = new ListenerCallback();
                 listener.OnPublish += listener_OnPublish;
-
                 sub = new Subscriber(serviceUri, listener);
-                sub.Subscribe();
-                Console.WriteLine("[{0}]连接成功！", DateTime.Now.ToString("yy-MM-dd HH:mm:ss"));
-                Console.WriteLine("输入 @exit 断开连接。");
-                string line;
-                while (true)
-                {
-                    Console.Write(">>");
-                    line = Console.ReadLine();
-                    if ("@exit" == line.Trim())
-                    {
-                        Console.WriteLine("[{0}]准备断开连接……", DateTime.Now.ToString("yy-MM-dd HH:mm:ss"));
-                        break;
-                    }
-                }
+                sub.OnSubscribe += sub_OnSubscribe;
 
+                //连接服务器
+                sub.Subscribe();
             }
             catch (Exception ex)
             {
@@ -50,12 +38,29 @@ namespace wsClient
             Console.ReadLine();
         }
 
+        static void sub_OnSubscribe(object sender, EventArgs e)
+        {
+            Console.WriteLine("[{0}]连接成功！", DateTime.Now.ToString("yy-MM-dd HH:mm:ss"));
+            Console.WriteLine("输入 @exit 断开连接。");
+            string line;
+            while (true)
+            {
+                Console.Write(">>");
+                line = Console.ReadLine();
+                if ("@exit" == line.Trim())
+                {
+                    Console.WriteLine("[{0}]准备断开连接……", DateTime.Now.ToString("yy-MM-dd HH:mm:ss"));
+                    break;
+                }
+            }
+        }
+
         static void listener_OnPublish(object sender, ListenerCallbackEventArgs e)
         {
             Console.WriteLine("那个啥，收到了消息：{0}", e.Message);
         }
 
-        #region 程序关闭事件 
+        #region 程序关闭事件
         public delegate bool ControlCtrlDelegate(int CtrlType);
         [DllImport("kernel32.dll")]
         private static extern bool SetConsoleCtrlHandler(ControlCtrlDelegate HandlerRoutine, bool Add);
@@ -74,9 +79,9 @@ namespace wsClient
                     sub.Dispose();
                     break;
             }
-            
+
             return false;
-        } 
+        }
         #endregion
     }
 }
